@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>Hello World with Youtube Video</title>
+<style>
+        /* Define CSS styles for the Morse code animation */
+        #morse-code {
+            font-size: 24px;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: .15em solid orange;
+        }
+    </style>
+</head>
+<body>
+<h1>Hello, World!!!</h1>
+
+<!-------Embed the Youtube Video---->
+<iframe width="560" height"315" src="https://www.youtube.com/embed/KOdfpbnWLVo" frameborder="0" allowfullscreen></iframe>
+
+ <!-- Create a Morse code animation container -->
+    <div id="morse-code"></div>
+
+    <script>
+        // JavaScript to animate "Hello, World!" in Morse code
+        const text = "Hello, World!";
+        const morseCode = {
+            'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',
+            'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---',
+            'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---',
+            'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-',
+            'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--',
+            'Z': '--..', '0': '-----', '1': '.----', '2': '..---', '3': '...--',
+            '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..',
+            '9': '----.'
+        };
+
+        const morseCodeContainer = document.getElementById('morse-code');
+
+        function animateMorseCode(text) {
+            let morseMessage = '';
+            for (let i = 0; i < text.length; i++) {
+                const char = text[i].toUpperCase();
+                if (char === ' ') {
+                    morseMessage += ' ';
+                } else if (morseCode[char]) {
+                    morseMessage += morseCode[char] + ' ';
+                }
+            }
+
+            let index = 0;
+            const morseInterval = setInterval(function() {
+                if (index < morseMessage.length) {
+                    morseCodeContainer.innerHTML += morseMessage[index];
+                    index++;
+                } else {
+                    clearInterval(morseInterval);
+                }
+            }, 250);
+        }
+
+        animateMorseCode(text);
+    </script>
+
+
+
+
+
+
+
+</body>
+</html>
